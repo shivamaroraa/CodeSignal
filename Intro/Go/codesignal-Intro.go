@@ -219,6 +219,59 @@ func sortByHeight(a []int) []int {
 }
 
 
+func reverseInParentheses(inputString string) string {
+	x:= 0
+
+	for i:=0; i< len(inputString); i++ {
+
+		if string(inputString[i]) == "(" {
+			x= i
+		}
+		if string(inputString[i]) == ")" {
+			y:= i
+			return reverseInParentheses(inputString[:x] + reverse(inputString[x+1:y]) + inputString[y+1:])
+		}
+	}
+
+	return inputString
+
+}
+
+func reverse(s string) string {
+	rns := []rune(s)
+	for i, j := 0, len(rns)-1; i < j; i, j = i+1, j-1 {
+
+
+		rns[i], rns[j] = rns[j], rns[i]
+	}
+
+	return string(rns)
+}
+
+
+
+func alternatingSums(a []int) []int {
+
+	sum1:=0
+	sum2:=0
+
+	for i:=0; i< len(a); i++{
+		if i%2==0{
+			sum1+= a[i]
+		} else{
+			sum2+= a[i]
+		}
+	}
+	var result= []int {sum1, sum2}
+	return result
+
+}
+
+
+
+
+
+
 
 
 
