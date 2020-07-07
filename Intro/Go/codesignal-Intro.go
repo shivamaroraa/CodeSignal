@@ -1,6 +1,10 @@
 package Go
 
-import "strconv"
+import (
+	"fmt"
+	"sort"
+	"strconv"
+)
 
 func add(param1 int, param2 int) int {
 	sum := param1 + param2
@@ -186,6 +190,34 @@ func toInt(numS string) int{
 	num, _:= strconv.Atoi(numS)
 	return num
 }
+
+
+
+func sortByHeight(a []int) []int {
+
+	heightArray:= make([]int, 0)
+	indexArray:= make([]int, 0)
+
+	for i, v:= range a{
+		if v != -1{
+			heightArray = append(heightArray, v)
+			indexArray = append(indexArray, i)
+		}
+
+	}
+	sort.Ints(heightArray)
+
+	for j, v:=range indexArray{
+
+		a[v] = heightArray[j]
+
+	}
+
+	fmt.Println(a)
+	return a
+
+}
+
 
 
 
